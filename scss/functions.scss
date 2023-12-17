@@ -1,0 +1,22 @@
+@use "sass:math";
+// Set the base font size as a fraction of vw
+$baseFontSizeVW: calc(100vw / 1440);
+
+// Function to convert pixels to rems
+
+// @function rem($px) {
+//   $calculation: math.div($px, $baseFontSizeVW);
+//   @return #{($calculation)rem};
+// }
+
+//#{math.div($px, $baseFontSizeVW)}rem;
+
+/*
+$desktopHigher = width <= 480px);
+
+@media (mobileLower) {
+  body {
+    background-color: aquamarine;
+  }
+}
+*/

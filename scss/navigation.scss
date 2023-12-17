@@ -1,0 +1,270 @@
+/*======================================
+
+        Default Values
+
+Fonts: Roboto
+
+Colors:
+1. orange: #F79041;
+2. dark gray: #222;
+3. gray: #ccc;
+4. wgite: #fff;
+
+======================================*/
+
+
+//css
+
+.start-menu {
+  position: fixed;
+  height: 100vh;
+  width: 60px;
+  background-color: #222;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  box-shadow: 1px 5px 15px #000;
+  transition: all .3s ease-in-out;
+
+  &__logo {
+    position: absolute;
+    top: 10px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.menu-close {
+  position: absolute;
+  top: 65px;
+
+  i {
+      color: #ccc;
+      font-size: 22px;
+      cursor: pointer;
+      transition: all .3s ease-in-out;
+
+      &:hover {
+        color: rgb(206, 17, 17);
+      }
+  }
+}
+
+.button-anim {
+  animation: buttonAnim .3s forwards ease-in;
+  animation-delay: .15s;
+}
+
+
+
+.button-anim-close {
+  animation: buttonAnimClose .3s forwards ease-in;
+  animation-delay: .6s;
+}
+
+
+.nav-anim {
+  animation: navAnim .5s forwards linear;
+  display: flex;
+  animation-delay: .5s;
+}
+
+
+
+.nav-anim-close {
+  animation: navAnimClose .7s forwards linear;
+  display: flex;
+}
+
+.social {
+  transform: rotate(-90deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  &__links {
+      color: #ccc;
+      margin-right: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+          color: #F79041;
+      }
+  }
+}
+
+//navigation menu
+.main-nav {
+  position: fixed;
+  height: 100vh;
+  background-color: #222;
+  transition: all .5s ease;
+  z-index: 3;
+  left: -300px;
+  top: 0;
+  width: 300px;
+  display: none;
+  overflow: hidden;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 5px 15px #222;
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+
+  .hidden {
+    display: none;
+  }
+
+  &__logo {
+    position: absolute;
+    bottom: 30px;
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.icon-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  color: #ccc;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-decoration: none;
+
+  a {
+      text-decoration: none;
+      color: #ccc;
+      margin-top: 20px;
+      font-size: 30px;
+      transition: all .3s ease-in-out;
+
+      &:hover {
+        color: #ce1111;;
+      }
+  }
+
+  a.active {
+    color: #ce1111;
+  }
+}
+
+.nav__title {
+  position: absolute;
+  top: 50px;
+  left: 10%;
+  color: #ccc;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+@media all and (width > 768px) {
+  @keyframes navAnimClose {
+    0% {
+        left: 0;
+    }
+  
+    30% {
+        left: 2px;
+    }
+    100% {
+        left: -600px;
+    }
+  }
+
+  @keyframes navAnim {
+    from {
+        left: -600px;
+    }
+    to {
+        left: 0;
+    }
+  }
+
+  @keyframes buttonAnimClose {
+    from {
+        left: -100px;
+    }
+    to {
+        left: 0;
+    }
+  }
+
+  @keyframes buttonAnim {
+    0% {
+        left: -10px;
+    }
+    30% {
+        left: 1px;
+    }
+    100% {
+        left: -100px;
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .start-menu {
+      display: none;
+  }
+  
+  .main-nav {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    left: 0;
+    width: 100%;
+    
+    .nav__title {
+      display: none;
+    }
+
+    .icon-close {
+      display: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      flex-direction: row;
+      padding: 0;
+      margin: 0 15px 0 0;
+      justify-content: space-between;
+      a {
+        font-size: 20px;
+        margin-left: 15px;
+        margin-top: 0;
+      }
+
+      &:not(.hidden):first-child{
+        margin-left: 0;
+      }
+    }
+
+    &__logo {
+      position: relative;
+      width: 70px;
+      height: 70px;
+      bottom: 0;
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+  }
+}
