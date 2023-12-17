@@ -32,6 +32,9 @@ Colors:
   width: 40px;
   height: 40px;
 }
+.start-menu .hidden {
+  display: none;
+}
 
 .menu-close {
   position: absolute;

@@ -12,8 +12,6 @@ $desktopHigher = width <= 480px);
 .main-carousel {
   z-index: 1;
   position: relative;
-  /*max-width: 80vh;
-  height: 80vh;*/
   margin: auto;
   padding-left: 60px;
 }
@@ -252,6 +250,9 @@ Colors:
   top: 10px;
   width: 40px;
   height: 40px;
+}
+.start-menu .hidden {
+  display: none;
 }
 
 .menu-close {
@@ -539,7 +540,7 @@ Colors:
   margin: 0;
   margin-left: 60px;
 }
-.image-group.sold {
+.image-group.unavalible {
   color: #ff1e1e;
   text-decoration: line-through;
 }

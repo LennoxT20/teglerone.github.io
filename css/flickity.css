@@ -1,8 +1,6 @@
 .main-carousel {
   z-index: 1;
   position: relative;
-  /*max-width: 80vh;
-  height: 80vh;*/
   margin: auto;
   padding-left: 60px;
 }

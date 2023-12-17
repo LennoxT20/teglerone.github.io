@@ -10,16 +10,17 @@ var flkty = new Flickity(elem, {
     wrapAround: true,
     adaptiveHeight: true,
     setGallerySize: false,
-    imagesLoaded: true
+    imagesLoaded: true,
+    lazyLoad: true
 });
 
 thumbnailImages.forEach((image, index) => {
   image.dataset.group = index + 1;
 
-  if(image.classList.contains('sold')) {
+  if(image.classList.contains('unavalible')) {
     const overlay = document.createElement('div');
     overlay.classList.add('overlay');
-    overlay.innerHTML = 'SOLD';
+    overlay.innerHTML = 'NEDOSTUPNO';
     image.parentNode.appendChild(overlay);
   }
 })
@@ -35,12 +36,12 @@ thumbnailGallery.addEventListener('click', (e) => {
 
         const groupIndex = e.target.getAttribute('data-group');
         const imageGroup = document.querySelector('.image-group');
-        if(e.target.classList.contains('sold')) {
-          imageGroup.classList.add('sold');
-          console.log('sold')
+        if(e.target.classList.contains('unavalible')) {
+          imageGroup.classList.add('unavalible');
+          console.log('unavalible')
         } else {
-          imageGroup.classList.remove('sold');
-          console.log('not sold')
+          imageGroup.classList.remove('unavalible');
+          console.log('not unavalible')
         }
 
         //Jar name display
@@ -80,13 +81,13 @@ const carouselCell = document.querySelectorAll('.carousel-cell');
 exitButton.addEventListener('click', () => {
     fullScreenContainer.classList.remove('show');
 })
-
+/*
 //clicking outside to close
 fullScreenContainer.addEventListener('click', (event) => {
     if(!event.target.matches(flickityNavigation) || !event.target.matches(carouselCell)) {
             fullScreenContainer.classList.remove('show')
     }
-})
+})*/
 
 // Loader
 function load() {

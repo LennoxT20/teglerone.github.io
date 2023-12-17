@@ -2,9 +2,6 @@
 .main-carousel {
   z-index: 1;
   position: relative;
-  //width: calc(100% - 60px);
-  /*max-width: 80vh;
-  height: 80vh;*/
   margin: auto;
   padding-left: 60px;
 
@@ -14,8 +11,8 @@
 }
 
 .carousel-cell {
-height: fit-content;
-width: auto;
+  height: fit-content;
+  width: auto;
 }
 
 
@@ -52,9 +49,9 @@ width: auto;
 .flickity-enabled.is-draggable {
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .flickity-enabled.is-draggable .flickity-viewport {

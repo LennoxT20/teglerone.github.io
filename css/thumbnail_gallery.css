@@ -79,7 +79,7 @@
   margin: 0;
   margin-left: 60px;
 }
-.image-group.sold {
+.image-group.unavalible {
   color: #ff1e1e;
   text-decoration: line-through;
 }
