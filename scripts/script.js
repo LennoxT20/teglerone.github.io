@@ -3,6 +3,7 @@ const thumbnailImages = document.querySelectorAll('.gallery__image');
 const fullScreenGallery = document.querySelector('.flickity-slider');
 const flickityVP = document.querySelector('flickity-viewport');
 const thumbnailGallery = document.querySelector('.thumbnail-gallery');
+const thumbnailContainer = document.querySelector('.thumbnail-gallery__container');
 const elem = document.querySelector('.main-carousel');
 var flkty = new Flickity(elem, {
     cellAlign: 'left',
@@ -31,7 +32,8 @@ function getImagesForGroup(groupIndex) {
 }
 
 //Opening flickity
-thumbnailGallery.addEventListener('click', (e) => {
+thumbnailContainer.addEventListener('click', (e) => {
+    
     if (e.target.classList.contains('gallery__image')) {
 
         const groupIndex = e.target.getAttribute('data-group');
@@ -97,7 +99,7 @@ function load() {
 load();
 
 
-////////////////////// filtrirat
+////////// filtrirat
 function fadeOut(element, duration) {
     var milliseconds = 10; // Adjust this for smoother/faster animation
     var steps = duration / milliseconds;

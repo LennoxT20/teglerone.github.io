@@ -491,7 +491,8 @@ Colors:
   opacity: 0;
   margin: 0;
 }
-.thumbnail-gallery .overlay {
+
+.overlay {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -502,7 +503,7 @@ Colors:
   align-items: center;
   justify-content: center;
   background-color: hsla(0, 0%, 30%, 0.6);
-  font-size: 50px;
+  font-size: 30px;
 }
 
 .gallery__image {
@@ -550,7 +551,7 @@ Colors:
     padding-left: 0;
     padding-top: 100px;
   }
-  .gallery__image {
+  .thumbnail-gallery__container {
     max-width: 32%;
   }
   .full-screen-container {
@@ -564,9 +565,12 @@ Colors:
     font-size: 35px;
     margin-top: 100px;
   }
+  .overlay {
+    font-size: 20px;
+  }
 }
 @media all and (max-width: 1024px) {
-  .gallery__image {
+  .thumbnail-gallery__container {
     max-width: 48.5%;
   }
 }
