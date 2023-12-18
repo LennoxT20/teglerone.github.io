@@ -10,7 +10,7 @@
 
 .carousel-cell {
   height: fit-content;
-  width: auto;
+  width: 100%;
 }
 
 .flickity-enabled {
@@ -36,7 +36,7 @@
   align-items: center;
 }
 .flickity-slider img {
-  height: auto;
+  height: 80vh;
   max-height: 80vh;
   width: 100%;
   object-fit: contain; /* or adjust as needed */

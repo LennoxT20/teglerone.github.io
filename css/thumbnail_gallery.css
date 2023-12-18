@@ -9,9 +9,6 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   flex-grow: 1;
-  /*
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); */
 }
 .thumbnail-gallery__container {
   position: relative;
@@ -43,10 +40,12 @@
   justify-content: center;
   background-color: hsla(0, 0%, 30%, 0.6);
   font-size: 30px;
+  border-radius: 8px;
 }
 
 .gallery__image {
   width: 100%;
+  border-radius: 8px;
 }
 
 .full-screen-container {
@@ -106,6 +105,9 @@
   }
   .overlay {
     font-size: 20px;
+  }
+  .image-group {
+    margin-left: 0;
   }
 }
 @media all and (max-width: 1024px) {

@@ -165,9 +165,9 @@ function filterGallery(filter) {
     let elClasses = Array.from(image.classList);
     
     if(elClasses.includes(filter) || filter === 'all') {
-      image.classList.remove('hidden');
+      image.parentNode.classList.remove('hidden');
     } else {
-      image.classList.add('hidden');
+      image.parentNode.classList.add('hidden');
     }
   });
   closeMenu();

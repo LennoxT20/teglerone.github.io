@@ -21,7 +21,7 @@ $desktopHigher = width <= 480px);
 
 .carousel-cell {
   height: fit-content;
-  width: auto;
+  width: 100%;
 }
 
 .flickity-enabled {
@@ -47,7 +47,7 @@ $desktopHigher = width <= 480px);
   align-items: center;
 }
 .flickity-slider img {
-  height: auto;
+  height: 80vh;
   max-height: 80vh;
   width: 100%;
   object-fit: contain; /* or adjust as needed */
@@ -470,9 +470,6 @@ Colors:
   flex-wrap: wrap;
   justify-content: flex-start;
   flex-grow: 1;
-  /*
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); */
 }
 .thumbnail-gallery__container {
   position: relative;
@@ -504,10 +501,12 @@ Colors:
   justify-content: center;
   background-color: hsla(0, 0%, 30%, 0.6);
   font-size: 30px;
+  border-radius: 8px;
 }
 
 .gallery__image {
   width: 100%;
+  border-radius: 8px;
 }
 
 .full-screen-container {
@@ -567,6 +566,9 @@ Colors:
   }
   .overlay {
     font-size: 20px;
+  }
+  .image-group {
+    margin-left: 0;
   }
 }
 @media all and (max-width: 1024px) {
