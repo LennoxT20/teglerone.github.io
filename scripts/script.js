@@ -32,7 +32,7 @@ function getImagesForGroup(groupIndex) {
 }
 
 //Opening flickity
-thumbnailContainer.addEventListener('click', (e) => {
+thumbnailGallery.addEventListener('click', (e) => {
     
     if (e.target.classList.contains('gallery__image')) {
 
