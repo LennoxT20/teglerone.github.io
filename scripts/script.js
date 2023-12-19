@@ -15,17 +15,6 @@ var flkty = new Flickity(elem, {
     lazyLoad: true
 });
 
-thumbnailImages.forEach((image, index) => {
-  image.dataset.group = index + 1;
-
-  if(image.classList.contains('unavalible')) {
-    const overlay = document.createElement('div');
-    overlay.classList.add('overlay');
-    overlay.innerHTML = 'NEDOSTUPNO';
-    image.parentNode.appendChild(overlay);
-  }
-})
-
 // Fill the gallery
 function getImagesForGroup(groupIndex) {
     return [`./img/group${groupIndex}/img1.jpg`, `./img/group${groupIndex}/img2.jpg`, `./img/group${groupIndex}/img3.jpg`, `./img/group${groupIndex}/img4.jpg`];
@@ -38,12 +27,12 @@ thumbnailGallery.addEventListener('click', (e) => {
 
         const groupIndex = e.target.getAttribute('data-group');
         const imageGroup = document.querySelector('.image-group');
-        if(e.target.classList.contains('unavalible')) {
-          imageGroup.classList.add('unavalible');
-          console.log('unavalible')
+        if(e.target.classList.contains('unavaliable')) {
+          imageGroup.classList.add('unavaliable');
+          console.log('unavaliable')
         } else {
-          imageGroup.classList.remove('unavalible');
-          console.log('not unavalible')
+          imageGroup.classList.remove('unavaliable');
+          console.log('not unavaliable')
         }
 
         //Jar name display
@@ -189,3 +178,4 @@ filters.forEach(filter => {
     filter.classList.add('hidden');
   }
 });
+
