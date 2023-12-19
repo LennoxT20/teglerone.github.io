@@ -1,4 +1,4 @@
-
+/*
 
 thumbnailImages.forEach((image, index) => {
     image.dataset.group = index + 1;
@@ -35,4 +35,4 @@ document.addEventListener("DOMContentLoaded", function() {
       // Possibly fall back to event handlers here
     }
   });
-  
+  */

@@ -12,13 +12,24 @@ var flkty = new Flickity(elem, {
     adaptiveHeight: true,
     setGallerySize: false,
     imagesLoaded: true,
-    lazyLoad: true
 });
 
 // Fill the gallery
 function getImagesForGroup(groupIndex) {
     return [`./img/group${groupIndex}/img1.jpg`, `./img/group${groupIndex}/img2.jpg`, `./img/group${groupIndex}/img3.jpg`, `./img/group${groupIndex}/img4.jpg`];
 }
+
+thumbnailImages.forEach((image, index) => {
+  image.dataset.group = index + 1;
+  //image.classList.add('lazy');
+
+  if(image.classList.contains('unavaliable')) {
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+    overlay.innerHTML = 'NEDOSTUPNO';
+    image.parentNode.appendChild(overlay);
+  }
+})
 
 //Opening flickity
 thumbnailGallery.addEventListener('click', (e) => {
@@ -27,12 +38,12 @@ thumbnailGallery.addEventListener('click', (e) => {
 
         const groupIndex = e.target.getAttribute('data-group');
         const imageGroup = document.querySelector('.image-group');
-        if(e.target.classList.contains('unavaliable')) {
-          imageGroup.classList.add('unavaliable');
-          console.log('unavaliable')
+        if(e.target.classList.contains('unavalible')) {
+          imageGroup.classList.add('unavalible');
+          console.log('unavalible')
         } else {
-          imageGroup.classList.remove('unavaliable');
-          console.log('not unavaliable')
+          imageGroup.classList.remove('unavalible');
+          console.log('not unavalible')
         }
 
         //Jar name display
