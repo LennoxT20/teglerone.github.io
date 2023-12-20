@@ -836,16 +836,19 @@ a {
   font-size: 30px;
 }
 .contact a {
-  color: #F79041;
+  color: #ffd12b;
 }
 .contact a:hover {
   color: #fff;
+}
+.contact p {
+  margin: 0;
 }
 
 @media all and (max-width: 768px) {
   .contact {
     margin-left: 10px;
-    margin-top: 130px;
+    margin-top: 120px;
     font-size: 20px;
   }
 }

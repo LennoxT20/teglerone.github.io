@@ -35,18 +35,22 @@ a {
   color: #fff;
   font-size: 30px;
   a {
-    color: #F79041;
+    color: #ffd12b;
     
     &:hover {
       color: #fff;
     }
+  }
+
+  p {
+    margin: 0;
   }
 }
 
 @media all and (max-width: 768px) {
   .contact {
     margin-left: 10px;
-    margin-top: 130px;
+    margin-top: 120px;
     font-size: 20px;
   }
 }
