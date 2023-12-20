@@ -29,3 +29,24 @@ li {
 a {
   text-decoration: none;
 }
+
+.contact {
+  margin-left: 70px;
+  color: #fff;
+  font-size: 30px;
+  a {
+    color: #F79041;
+    
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .contact {
+    margin-left: 10px;
+    margin-top: 130px;
+    font-size: 20px;
+  }
+}

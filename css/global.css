@@ -540,7 +540,7 @@ Colors:
   margin: 0;
   margin-left: 60px;
 }
-.image-group.unavalible {
+.image-group.unavaliable {
   color: #ff1e1e;
   text-decoration: line-through;
 }
@@ -548,7 +548,7 @@ Colors:
 @media all and (max-width: 768px) {
   .products {
     padding-left: 0;
-    padding-top: 100px;
+    padding-top: 20px;
   }
   .thumbnail-gallery__container {
     max-width: 32%;
@@ -828,6 +828,26 @@ li {
 
 a {
   text-decoration: none;
+}
+
+.contact {
+  margin-left: 70px;
+  color: #fff;
+  font-size: 30px;
+}
+.contact a {
+  color: #F79041;
+}
+.contact a:hover {
+  color: #fff;
+}
+
+@media all and (max-width: 768px) {
+  .contact {
+    margin-left: 10px;
+    margin-top: 130px;
+    font-size: 20px;
+  }
 }
 
 /*# sourceMappingURL=global.css.map */
