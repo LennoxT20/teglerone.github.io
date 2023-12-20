@@ -11,6 +11,7 @@
 body {
   background-color: #969696;
   margin: 0;
+  overflow-x: hidden;
 }
 
 html {
@@ -35,7 +36,7 @@ a {
   color: #fff;
   font-size: 30px;
   a {
-    color: #ffd12b;
+    color: #000000;
     
     &:hover {
       color: #fff;
