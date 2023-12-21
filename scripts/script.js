@@ -21,7 +21,6 @@ function getImagesForGroup(groupIndex) {
 
 thumbnailImages.forEach((image, index) => {
   image.dataset.group = index + 1;
-  //image.classList.add('lazy');
 
   if(image.classList.contains('unavaliable')) {
     const overlay = document.createElement('div');
@@ -34,8 +33,11 @@ thumbnailImages.forEach((image, index) => {
 //Opening flickity
 thumbnailGallery.addEventListener('click', (e) => {
     
-    if (e.target.classList.contains('gallery__image')) {
-
+    if (e.target.classList.contains('gallery__image') || e.target.classList.contains('overlay')) {
+        if (e.target.classList.contains('overlay')) {
+          console.log('test')
+          
+        }
         const groupIndex = e.target.getAttribute('data-group');
         const imageGroup = document.querySelector('.image-group');
         if(e.target.classList.contains('unavalible')) {
@@ -162,7 +164,8 @@ function filterGallery(filter) {
   var images = document.querySelectorAll('.gallery__image');
 
   images.forEach(image => {
-    let elClasses = Array.from(image.classList);
+    let elClasses = image.dataset.type;
+    console.log(elClasses)
     
     if(elClasses.includes(filter) || filter === 'all') {
       image.parentNode.classList.remove('hidden');
@@ -185,8 +188,36 @@ filters.forEach(filter => {
   })
 
   //treba presložit
-  if(!document.querySelector(`.${filter.dataset.filter}`) && filter.dataset.filter != 'all') {
+  if(!document.querySelector(`[data-type="${filter.dataset.filter}"]`) && filter.dataset.filter != 'all') {
     filter.classList.add('hidden');
+    console.log(filter.dataset.filter)
   }
 });
 
+
+/*
+//lazy load
+document.addEventListener("DOMContentLoaded", function() {
+    var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+  
+    if ("IntersectionObserver" in window) {
+      let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            let lazyImage = entry.target;
+            lazyImage.src = lazyImage.dataset.src;
+            lazyImage.srcset = lazyImage.dataset.srcset;
+            lazyImage.classList.remove("lazy");
+            lazyImageObserver.unobserve(lazyImage);
+          }
+        });
+      });
+  
+      lazyImages.forEach(function(lazyImage) {
+        lazyImageObserver.observe(lazyImage);
+      });
+    } else {
+      // Possibly fall back to event handlers here
+    }
+  });*/
+  

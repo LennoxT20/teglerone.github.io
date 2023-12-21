@@ -1,6 +1,8 @@
-/*
+const thumbnailImage = document.querySelectorAll('.gallery__image');
 
-thumbnailImages.forEach((image, index) => {
+thumbnailImage.forEach((image, index) => {
+  console.log('test')
+
     image.dataset.group = index + 1;
     image.classList.add('lazy');
   
@@ -35,4 +37,4 @@ document.addEventListener("DOMContentLoaded", function() {
       // Possibly fall back to event handlers here
     }
   });
-  */
+  
