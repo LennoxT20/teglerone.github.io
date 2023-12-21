@@ -34,18 +34,18 @@ thumbnailImages.forEach((image, index) => {
 thumbnailGallery.addEventListener('click', (e) => {
     
     if (e.target.classList.contains('gallery__image') || e.target.classList.contains('overlay')) {
-        if (e.target.classList.contains('overlay')) {
-          console.log('test')
+        var targetedElement = e.target;
+        if (targetedElement.classList.contains('overlay')) {
+          targetedElement = targetedElement.previousElementSibling;
           
         }
-        const groupIndex = e.target.getAttribute('data-group');
+        const groupIndex = targetedElement.getAttribute('data-group');
         const imageGroup = document.querySelector('.image-group');
-        if(e.target.classList.contains('unavalible')) {
-          imageGroup.classList.add('unavalible');
-          console.log('unavalible')
+        console.log(e.target.classList)
+        if(e.target.classList.contains('overlay')) {
+          imageGroup.classList.add('unavaliable');
         } else {
-          imageGroup.classList.remove('unavalible');
-          console.log('not unavalible')
+          imageGroup.classList.remove('unavaliable');
         }
 
         //Jar name display
