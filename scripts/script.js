@@ -5,6 +5,9 @@ const flickityVP = document.querySelector('flickity-viewport');
 const thumbnailGallery = document.querySelector('.thumbnail-gallery');
 const thumbnailContainer = document.querySelector('.thumbnail-gallery__container');
 const elem = document.querySelector('.main-carousel');
+const counter = document.querySelector('.other-filters__count');
+var count = 0;
+
 var flkty = new Flickity(elem, {
     cellAlign: 'left',
     contain: true,
@@ -13,6 +16,7 @@ var flkty = new Flickity(elem, {
     setGallerySize: false,
     imagesLoaded: true,
 });
+
 
 // Fill the gallery
 function getImagesForGroup(groupIndex) {
@@ -27,8 +31,12 @@ thumbnailImages.forEach((image, index) => {
     overlay.classList.add('overlay');
     overlay.innerHTML = 'NEDOSTUPNO';
     image.parentNode.appendChild(overlay);
+  } else {
+    count++;
   }
-})
+
+  counter.innerHTML = count;
+}) 
 
 //Opening flickity
 thumbnailGallery.addEventListener('click', (e) => {
@@ -41,7 +49,6 @@ thumbnailGallery.addEventListener('click', (e) => {
         }
         const groupIndex = targetedElement.getAttribute('data-group');
         const imageGroup = document.querySelector('.image-group');
-        console.log(e.target.classList)
         if(e.target.classList.contains('overlay')) {
           imageGroup.classList.add('unavaliable');
         } else {
@@ -73,25 +80,43 @@ thumbnailGallery.addEventListener('click', (e) => {
         fullScreenContainer.classList.add('show');
         // Do not delete!
         setInterval(() => {flkty.resize()}, 1);
+
+        //disableing background scroll
+        document.body.style.position = 'fixed';
     }
 });
 
 // Exit full screen gallery
-const exitButton = document.querySelector('.exit');
+
 const flickityNavigation = document.querySelectorAll('.flickity-button');
 const carouselCell = document.querySelectorAll('.carousel-cell');
 
+document.addEventListener('DOMContentLoaded', function () {
 
-exitButton.addEventListener('click', () => {
-    fullScreenContainer.classList.remove('show');
-})
-/*
-//clicking outside to close
-fullScreenContainer.addEventListener('click', (event) => {
-    if(!event.target.matches(flickityNavigation) || !event.target.matches(carouselCell)) {
-            fullScreenContainer.classList.remove('show')
+  fullScreenContainer.addEventListener('click', function (event) {
+    // Check if the clicked element is one of the allowed elements
+    const nonExit = ['carousel-cell-image', 'flickity-button', 'flickity-button-icon', 'flickity-button-icon', 'dot', 'image-group', 'flickity-page-dots', 'arrow']
+    var shouldExit = true;
+    let element = event.target;
+
+    nonExit.forEach((el) => {
+      if(element.classList.contains(el)) {
+        shouldExit = false;
+      }
+    })
+
+    if(shouldExit || element.classList.contains('exit')) {
+      console.log('test');
+      fullScreenContainer.classList.remove('show');
+      document.body.style.position = '';
+      console.log(element.classList)
     }
-})*/
+  })
+})
+
+fullScreenContainer.addEventListener('click', (event) => {
+  
+})
 
 // Loader
 function load() {
@@ -165,7 +190,6 @@ function filterGallery(filter) {
 
   images.forEach(image => {
     let elClasses = image.dataset.type;
-    console.log(elClasses)
     
     if(elClasses.includes(filter) || filter === 'all') {
       image.parentNode.classList.remove('hidden');
@@ -190,7 +214,6 @@ filters.forEach(filter => {
   //treba presložit
   if(!document.querySelector(`[data-type="${filter.dataset.filter}"]`) && filter.dataset.filter != 'all') {
     filter.classList.add('hidden');
-    console.log(filter.dataset.filter)
   }
 });
 
@@ -220,4 +243,24 @@ document.addEventListener("DOMContentLoaded", function() {
       // Possibly fall back to event handlers here
     }
   });*/
+
+//toggle
+const showUnavaliable = document.querySelector('.show-unavaliable');
+
+showUnavaliable.addEventListener('click', () => {
+  if(showUnavaliable.checked) {
+    thumbnailImages.forEach(image => {
+      if(image.classList.contains('unavaliable') && !image.parentNode.classList.contains('hidden')) {
+        image.parentNode.classList.add('hidden');
+      }
+    })
+  } else {
+    thumbnailImages.forEach(image => {
+      if(image.classList.contains('unavaliable') && image.parentNode.classList.contains('hidden')) {
+        console.log('test');
+        image.parentNode.classList.remove('hidden');
+      }
+    })
+  }
+})
   

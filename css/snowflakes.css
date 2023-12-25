@@ -132,8 +132,58 @@
 }
 
 .snowflake:nth-of-type(11) {
+  left: 35%;
+  animation-delay: 2s;
+}
+
+.snowflake:nth-of-type(12) {
   left: 65%;
+  animation-delay: 3s;
+}
+
+.snowflake:nth-of-type(13) {
+  left: 15%;
   animation-delay: 2.5s;
+}
+
+.snowflake:nth-of-type(14) {
+  left: 67%;
+  animation-delay: 2.2s;
+}
+
+.snowflake:nth-of-type(15) {
+  left: 95%;
+  animation-delay: 2.9s;
+}
+
+.snowflake:nth-of-type(16) {
+  left: 15%;
+  animation-delay: 0.5s;
+}
+
+.snowflake:nth-of-type(17) {
+  left: 12%;
+  animation-delay: 1.2s;
+}
+
+.snowflake:nth-of-type(18) {
+  left: 86%;
+  animation-delay: 2.7s;
+}
+
+.snowflake:nth-of-type(19) {
+  left: 44%;
+  animation-delay: 2s;
+}
+
+.snowflake:nth-of-type(20) {
+  left: 26%;
+  animation-delay: 1.3s;
+}
+
+.snowflake:nth-of-type(21) {
+  left: 38%;
+  animation-delay: 1.1s;
 }
 
 /*# sourceMappingURL=snowflakes.css.map */

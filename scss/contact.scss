@@ -1,0 +1,32 @@
+.contact {
+    font-size: 30px;
+    padding: 1vw;
+
+    a {
+      color: #fff;
+      
+      &:hover {
+        color: #969696;
+      }
+    }
+  
+    p {
+      margin: 0;
+    }
+  
+    &__container {
+        background-color: #222;
+        border-radius: 8px;
+        box-shadow: #222222 1px 5px 15px 0px;
+        color: #969696;
+        padding: 10px;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .contact {
+      margin-left: 10px;
+      margin-top: 120px;
+      font-size: 20px;
+    }
+}

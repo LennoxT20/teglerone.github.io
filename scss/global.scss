@@ -6,6 +6,8 @@
 @import 'snowflakes.scss';
 @import 'loader.scss';
 @import 'font.scss';
+@import 'contact.scss';
+@import 'toggle.scss';
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 
 body {
@@ -18,10 +20,6 @@ html {
   scroll-behavior: smooth;
 }
 
-.show {
-    display: flex;
-}
-
 li {
   list-style: none;
   display: inline-block;
@@ -31,27 +29,16 @@ a {
   text-decoration: none;
 }
 
-.contact {
-  margin-left: 70px;
-  color: #fff;
-  font-size: 30px;
-  a {
-    color: #000000;
-    
-    &:hover {
-      color: #fff;
-    }
-  }
+.container {
+  margin-left: 60px;
+}
 
-  p {
-    margin: 0;
-  }
+.show {
+  display: flex;
 }
 
 @media all and (max-width: 768px) {
-  .contact {
-    margin-left: 10px;
-    margin-top: 120px;
-    font-size: 20px;
+  .container {
+    margin-left: 0px;
   }
 }

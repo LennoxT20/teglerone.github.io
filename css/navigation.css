@@ -110,14 +110,14 @@ Colors:
   background-position: bottom;
   background-repeat: no-repeat;
 }
-.main-nav .hidden {
-  display: none;
-}
 .main-nav__logo {
   position: absolute;
   bottom: 30px;
   width: 100px;
   height: 100px;
+}
+.main-nav .hidden {
+  display: none;
 }
 
 .icon-close {
@@ -127,6 +127,10 @@ Colors:
   color: #ccc;
   font-size: 22px;
   cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+.icon-close:hover {
+  color: #ce1111;
 }
 
 .nav-menu {
@@ -210,6 +214,14 @@ Colors:
     left: 0;
     width: 100%;
   }
+  .main-nav__logo {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    bottom: 0;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
   .main-nav .nav__title {
     display: none;
   }
@@ -230,14 +242,6 @@ Colors:
   }
   .main-nav .nav-menu:not(.hidden):first-child {
     margin-left: 0;
-  }
-  .main-nav__logo {
-    position: relative;
-    width: 70px;
-    height: 70px;
-    bottom: 0;
-    margin-left: 10px;
-    margin-top: 10px;
   }
 }
 
