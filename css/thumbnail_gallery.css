@@ -12,12 +12,19 @@
   cursor: pointer;
   border-radius: 8px;
   opacity: 1;
-  transition: height 0.2s ease-out, width 0.2s ease-out, opacity 0.2s ease-out;
   margin: 0 0 1vw 1vw;
   text-align: center;
   color: #fff;
+  transition: height 0.3s ease-out, width 0.3s ease-out, opacity 0.3s ease-out;
 }
 .thumbnail-gallery__container.hidden {
+  height: 0;
+  width: 0;
+  opacity: 0;
+  margin: 0;
+}
+.thumbnail-gallery__container.hidden .overlay {
+  transition: none;
   height: 0;
   width: 0;
   opacity: 0;
