@@ -1,6 +1,7 @@
 .other-filters {
   max-width: calc(100% - 60px);
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
   padding: 1vw;
@@ -49,11 +50,17 @@
     -webkit-transition: .4s;
     transition: .4s;
   }
+
+  input:checked + & {
+    background-color: #222;
+  }
+
+  &:hover {
+    background-color: rgba(34, 34, 34, 0.494);
+  }
 }
 
-input:checked + .slider {
-  background-color: #222;
-}
+
 
 input:focus + .slider {
   box-shadow: 0 0 1px #222;
@@ -63,4 +70,10 @@ input:checked + .slider:before {
   -webkit-transform: translateX(13px);
   -ms-transform: translateX(13px);
   transform: translateX(13px);
+}
+
+@media  all and (max-width: 768px) {
+  .other-filters {
+    max-width: 100%;
+  }
 }

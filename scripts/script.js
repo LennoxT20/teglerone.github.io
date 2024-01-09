@@ -27,13 +27,14 @@ function countImages() {
 
 // Fill the gallery
 function getGroupImages(groupIndex) {
-    return [`./img/group${groupIndex}/img1.jpg`, `./img/group${groupIndex}/img2.jpg`, `./img/group${groupIndex}/img3.jpg`, `./img/group${groupIndex}/img4.jpg`];
+    return [`./img/jars/group${groupIndex}/img1.jpg`, `./img/jars/group${groupIndex}/img2.jpg`, `./img/jars/group${groupIndex}/img3.jpg`, `./img/jars/group${groupIndex}/img4.jpg`];
 }
 
 // Adding overlay on unavaliable
 thumbnailImages.forEach((image, index) => {
-  image.dataset.group = index + 1;
+  image.dataset.group = index;
   if(image.classList.contains('unavaliable')) addOverlay(image);
+  //image.classList.add('lazy')
 }) 
 countImages();
 
@@ -217,7 +218,7 @@ filters.forEach(filter => {
 /*
 //lazy load
 document.addEventListener("DOMContentLoaded", function() {
-    var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+    var lazyImages = [].slice.call(document.querySelectorAll(".gallery__image"));
   
     if ("IntersectionObserver" in window) {
       let lazyImageObserver = new IntersectionObserver(function(entries, observer) {

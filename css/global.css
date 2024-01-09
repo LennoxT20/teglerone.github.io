@@ -357,6 +357,7 @@ Colors:
   flex-direction: column;
   justify-content: space-around;
   text-decoration: none;
+  flex-wrap: wrap;
 }
 .nav-menu a {
   text-decoration: none;
@@ -896,6 +897,7 @@ body {
 .other-filters {
   max-width: calc(100% - 60px);
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
   padding: 1vw;
@@ -943,9 +945,11 @@ body {
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
-
 input:checked + .slider {
   background-color: #222;
+}
+.slider:hover {
+  background-color: rgba(34, 34, 34, 0.494);
 }
 
 input:focus + .slider {
@@ -958,6 +962,11 @@ input:checked + .slider:before {
   transform: translateX(13px);
 }
 
+@media all and (max-width: 768px) {
+  .other-filters {
+    max-width: 100%;
+  }
+}
 body {
   background-color: #969696;
   margin: 0;
