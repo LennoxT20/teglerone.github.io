@@ -249,6 +249,15 @@ function filterGallery(filter) {
 function manageFilters () {
   filters.forEach(filter => {
     var selectedFilter = filter.dataset.filter;
+    var isHidden = true;
+    //check if filter should be used
+    dataJars.forEach(jar => {
+      if(jar.type.includes(selectedFilter) || selectedFilter === 'all') {
+        isHidden = false;
+      }
+    })
+
+    filter.classList.toggle('hidden', isHidden);
     
     filter.addEventListener('click', (e) => {
       activeFilter = e.target.dataset.filter;
