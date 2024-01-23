@@ -119,6 +119,9 @@ Colors:
 .main-nav .hidden {
   display: none;
 }
+.main-nav .logo-mobile {
+  display: none;
+}
 
 .icon-close {
   position: absolute;
