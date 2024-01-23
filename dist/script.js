@@ -171,12 +171,28 @@ function closeMenu() {
   mainNav.classList.remove('nav-anim-close');
   mainNav.classList.add('nav-anim-close');
   startMenu.classList.add('button-anim-close');
+  mainNav.classList.add('close-mobile');
+  mainNav.classList.remove('open-mobile');
 }
 openElement.onclick = openMenu;
 closeElement.onclick = closeMenu;
 menuLink.forEach(function (menuLink) {
   menuLink.onclick = closeMenu;
 });
+
+//movi
+
+var openElementMobile = document.querySelector('.open-mobile');
+var closeElementMobile = document.querySelector('.close-mobile');
+openElementMobile.onclick = openMobile;
+closeElementMobile.onclick = closeMobile;
+
+function openMobile() {
+  
+}
+
+function closeMobile() {
+}
 
 /// image-filter.js
 /// Filtering gallery

@@ -8,17 +8,22 @@ var filters = [];
 var jsonData, dataJars, dataFilters;
 
 const getData =  async () => {
-  const response = await (axios.get('/src/data.json'));
-  jsonData = response.data;
-  // Extract values from object properties and form an array
-  const dataArray = Object.values(response.data);
-  //dataArray.map(jars => console.log(jars[1].avaliable))
-  setUp(jsonData);
+  try {
+    const response = await (axios.get('/src/data.json'));
+    jsonData = response.data;
+    dataJars = await jsonData.jars;
+    dataFilters = jsonData.filters;
+
+    // Extract values from object properties and form an array
+    const dataArray = Object.values(response.data);
+    //dataArray.map(jars => console.log(jars[1].avaliable))
+    setUp(jsonData);
+  } catch(error) {
+    throw new Error (`Unable to get data from JSON at ${error.stack  }`);
+  }
 }
 
-const  setUp =  async (data) => {
-  dataJars = await data.jars;
-  dataFilters = data.filters;
+function setUp() {
   for(const key in dataFilters) {
     let filterClass = dataFilters[key].value;
     let filterName = dataFilters[key].frontend_value;
@@ -196,12 +201,14 @@ function fadeOut(element, duration) {
     requestAnimationFrame(step);
 }
 
+
 // Controlling side menu navigation
 var openElement = document.querySelector('.open-menu');
 var closeElement = document.querySelector('.close-menu');
 var menuLink = document.querySelectorAll('.nav-menu__link');
 var startMenu = document.querySelector('.start-menu');
 var mainNav = document.querySelector('.main-nav');
+console.log(mainNav)
 
 function openMenu() {
   startMenu.classList.remove('button-anim-close');
@@ -214,13 +221,17 @@ function openMenu() {
 }
 
 function closeMenu() {
-  startMenu.classList.remove('button-anim-close');
-  mainNav.classList.remove('nav-anim');
-  startMenu.classList.remove('button-anim');
-  mainNav.classList.remove('nav-anim-close');
-
-  mainNav.classList.add('nav-anim-close');
-  startMenu.classList.add('button-anim-close');
+  if(document.body.clientWidth <= 768) {
+    mainNav.classList.add('closed');
+  } else {
+    //startMenu.classList.remove('button-anim-close');
+    //mainNav.classList.remove('nav-anim');
+    //startMenu.classList.remove('button-anim');
+    //mainNav.classList.remove('nav-anim-close');
+  
+    mainNav.classList.add('nav-anim-close');
+    startMenu.classList.add('button-anim-close');
+  }
 }
 
 openElement.onclick = openMenu;
@@ -229,6 +240,16 @@ closeElement.onclick = closeMenu;
 menuLink.forEach(function(menuLink) {
   menuLink.onclick = closeMenu;
 })
+
+//mobile menu
+
+var openElementMobile = document.querySelector('.open-mobile');
+var closeElementMobile = document.querySelector('.close-menu');
+openElementMobile.onclick = openMobile;
+
+function openMobile() {
+  mainNav.classList.remove('closed');
+}
 
 /// image-filter.js
 /// Filtering gallery

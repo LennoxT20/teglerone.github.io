@@ -275,8 +275,8 @@ Colors:
 }
 
 .button-anim-close {
-  animation: buttonAnimClose 0.3s forwards ease-in;
-  animation-delay: 0.6s;
+  animation: buttonAnimClose 0.3s forwards linear;
+  animation-delay: 0.3s;
 }
 
 .nav-anim {
@@ -415,7 +415,7 @@ Colors:
       left: -10px;
     }
     30% {
-      left: 1px;
+      left: 0px;
     }
     100% {
       left: -100px;
@@ -429,39 +429,104 @@ Colors:
   .main-nav {
     position: fixed;
     display: flex;
-    justify-content: space-between;
-    height: 100px;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
     left: 0;
+    top: 0;
+    transition: top 0.9s ease-in;
+  }
+  .main-nav .open-menu {
+    color: #ccc;
+    position: absolute;
     width: 100%;
+    height: 10vh;
+    top: 90vh;
+    display: none;
+    justify-content: right;
+    align-items: center;
+    padding-right: 30px;
+    transition: all 0.9s ease-in;
+  }
+  .main-nav .open-menu i {
+    display: flex;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    cursor: pointer;
+    transition: all 0.9s ease-in;
+  }
+  .main-nav .open-menu i:hover {
+    color: #ce1111;
   }
   .main-nav__logo {
     position: relative;
     width: 70px;
     height: 70px;
     bottom: 0;
-    margin-left: 10px;
+    margin: 5px 0 20px 0;
     margin-top: 10px;
   }
-  .main-nav .nav__title {
-    display: none;
+  .main-nav.closed {
+    top: -90vh;
   }
-  .main-nav .icon-close {
-    display: none;
-  }
-  .main-nav .nav-menu {
+  .main-nav.closed .open-menu {
     display: flex;
-    flex-direction: row;
+  }
+  .main-nav.closed .open-menu i {
+    display: flex;
+    opacity: 1;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+  }
+  .main-nav .logo-mobile {
+    display: block;
+    max-width: 130px;
+    position: absolute;
+    left: calc(50% - 65px);
+  }
+  .nav__title {
+    display: none;
+  }
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
     padding: 0;
     margin: 0 15px 0 0;
     justify-content: space-between;
   }
-  .main-nav .nav-menu a {
+  .nav-menu a {
     font-size: 20px;
     margin-left: 15px;
     margin-top: 0;
   }
-  .main-nav .nav-menu:not(.hidden):first-child {
+  .nav-menu:not(.hidden):first-child {
     margin-left: 0;
+  }
+  .mobile-close {
+    animation: mobileClose 0.7s forwards linear;
+    display: flex;
+  }
+  .mobile-open {
+    animation: mobileOpen 0.7s forwards linear;
+    display: flex;
+  }
+  @keyframes mobileClose {
+    from {
+      top: 0;
+    }
+    to {
+      top: -90vh;
+    }
+  }
+  @keyframes mobileOpen {
+    from {
+      top: -90vh;
+    }
+    to {
+      top: 0;
+    }
   }
 }
 .thumbnail-gallery {
@@ -890,7 +955,7 @@ body {
 @media all and (max-width: 768px) {
   .contact {
     margin-left: 10px;
-    margin-top: 120px;
+    margin-top: 80px;
     font-size: 20px;
   }
 }
