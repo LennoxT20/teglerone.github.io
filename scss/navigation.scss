@@ -1,16 +1,4 @@
-/*======================================
 
-        Default Values
-
-Fonts: Roboto
-
-Colors:
-1. orange: #F79041;
-2. dark gray: #222;
-3. gray: #ccc;
-4. wgite: #fff;
-
-======================================*/
 
 
 //css
@@ -19,7 +7,7 @@ Colors:
   position: fixed;
   height: 100vh;
   width: 60px;
-  background-color: #222;
+  background-color: #896A67;
   z-index: 4;
   top: 0;
   left: 0;
@@ -47,13 +35,13 @@ Colors:
   top: 65px;
 
   i {
-      color: #ccc;
+      color: #EFF9F0;
       font-size: 22px;
       cursor: pointer;
       transition: all .3s ease-in-out;
 
       &:hover {
-        color: rgb(206, 17, 17);
+        color: #13070C;
       }
   }
 }
@@ -92,7 +80,7 @@ Colors:
   flex-direction: row;
 
   &__links {
-      color: #ccc;
+      color: #EFF9F0;
       margin-right: 30px;
       display: flex;
       justify-content: center;
@@ -101,7 +89,7 @@ Colors:
       transition: all 0.3s ease-in-out;
 
       &:hover {
-          color: #F79041;
+          color: #13070C;
       }
   }
 }
@@ -110,7 +98,7 @@ Colors:
 .main-nav {
   position: fixed;
   height: 100vh;
-  background-color: #222;
+  background-color: #896A67;
   transition: all .5s ease;
   z-index: 3;
   left: -300px;
@@ -129,8 +117,7 @@ Colors:
   &__logo {
     position: absolute;
     bottom: 30px;
-    width: 100px;
-    height: 100px;
+    width: 140px;
   }
 
   .hidden {
@@ -146,13 +133,13 @@ Colors:
   position: absolute;
   top: 30px;
   right: 30px;
-  color: #ccc;
+  color: #EFF9F0;
   font-size: 22px;
   cursor: pointer;
   transition: all .1s ease-in-out;
 
   &:hover {
-    color: #ce1111;;
+    color: #6B4D57;
   }
 }
 
@@ -165,18 +152,18 @@ Colors:
 
   a {
       text-decoration: none;
-      color: #ccc;
+      color: #EFF9F0;
       margin-top: 20px;
       font-size: 30px;
       transition: all .3s ease-in-out;
 
       &:hover {
-        color: #ce1111;;
+        color: #6B4D57;
       }
   }
 
   a.active {
-    color: #ce1111;
+    color: #13070C;
   }
 }
 
@@ -184,7 +171,7 @@ Colors:
   position: absolute;
   top: 50px;
   left: 10%;
-  color: #ccc;
+  color: #EFF9F0;
   font-size: 30px;
   font-weight: 400;
 }
@@ -251,7 +238,7 @@ Colors:
 
     .open-menu {
       //display: none;
-      color: #ccc;
+      color: #EFF9F0;
       position: absolute;
       width: 100%;
       height: 10vh;
@@ -270,7 +257,7 @@ Colors:
         cursor: pointer;
         transition: all .9s ease-in;
         &:hover {
-          color: #ce1111;
+          color: #6B4D57;
         }
       }
     }

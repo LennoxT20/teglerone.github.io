@@ -15,14 +15,12 @@ $vw : 1vw;
         opacity: 1;
         margin: 0 0 $vw $vw;
         text-align: center;
-        color: #fff;
-        transition: height 0.3s ease-out, width 0.3s ease-out, opacity 0.3s ease-out;
+        color: #EFF9F0;
+        transition: width 0.6s ease-in/*, opacity 0.3s ease-out*/;
         //transition: all 0.2s ease-out;
 
         &.hidden {
-            height: 0;
             width: 0;
-            opacity: 0;
             margin: 0;
 
             .overlay {
@@ -77,7 +75,7 @@ $vw : 1vw;
         font-size: 50px;
         margin: 15px;
         background-color: transparent;
-        color: #fff;
+        color: #EFF9F0;
         border: 0;
         cursor: pointer;
     }
@@ -85,7 +83,7 @@ $vw : 1vw;
 
 .image-group {
     font-size: 55px;
-    color: #fff;
+    color: #EFF9F0;
     text-align: center;
     margin: 0;
     margin-left: 60px;

@@ -224,11 +224,6 @@ function closeMenu() {
   if(document.body.clientWidth <= 768) {
     mainNav.classList.add('closed');
   } else {
-    //startMenu.classList.remove('button-anim-close');
-    //mainNav.classList.remove('nav-anim');
-    //startMenu.classList.remove('button-anim');
-    //mainNav.classList.remove('nav-anim-close');
-  
     mainNav.classList.add('nav-anim-close');
     startMenu.classList.add('button-anim-close');
   }
@@ -286,7 +281,8 @@ function manageFilters () {
         e.classList.remove('active');
       })
       filter.classList.add('active');
-      setTimeout(filterGallery(selectedFilter), 2000);
+      filterGallery(selectedFilter)
+      //setTimeout(filterGallery(selectedFilter), 2000);
     })
   });
 }

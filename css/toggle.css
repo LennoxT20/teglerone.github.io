@@ -33,7 +33,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #896A67;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -45,19 +45,19 @@
   width: 20px;
   left: 1px;
   bottom: 1px;
-  background-color: white;
+  background-color: #EFF9F0;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 input:checked + .slider {
-  background-color: #222;
+  background-color: #6B4D57;
 }
 .slider:hover {
   background-color: rgba(34, 34, 34, 0.494);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #222;
+  box-shadow: 0 0 1px rgba(107, 77, 87, 0.6196078431);
 }
 
 input:checked + .slider:before {
