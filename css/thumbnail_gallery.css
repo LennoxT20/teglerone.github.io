@@ -39,7 +39,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: hsla(0, 0%, 30%, 0.6);
+  background-color: rgba(221, 200, 196, 0.3960784314);
   font-size: 30px;
   border-radius: 8px;
 }
@@ -56,7 +56,7 @@
   width: 100vw;
   height: 100vh;
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.808);
+  background-color: rgba(137, 106, 103, 0.6705882353);
   top: 0;
   left: 0;
   z-index: 998;
@@ -82,7 +82,7 @@
   margin-left: 60px;
 }
 .image-group.unavaliable {
-  color: #ff1e1e;
+  color: #ff9898;
   text-decoration: line-through;
 }
 

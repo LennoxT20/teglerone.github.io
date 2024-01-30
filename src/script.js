@@ -1,70 +1,65 @@
 
-//1st function - getExchaneRate ->  To bi bilo meni getData
 const navMenu = document.querySelector('.nav-menu');
 const thumbnailGallery = document.querySelector('.thumbnail-gallery');
 const fullScreenContainer = document.querySelector('.full-screen-container');
 var thumbnailContainer, thumbnailImages;
 var filters = [];
-var jsonData, dataJars, dataFilters;
+var jsonData, jsonJars, jsonFilters;
 
 const getData =  async () => {
   try {
-    const response = await (axios.get('/src/data.json'));
+    const response = await axios.get('/src/data.json');
     jsonData = response.data;
-    dataJars = await jsonData.jars;
-    dataFilters = jsonData.filters;
+    jsonJars = jsonData.jars;
+    jsonFilters = jsonData.filters;
 
     // Extract values from object properties and form an array
     const dataArray = Object.values(response.data);
     //dataArray.map(jars => console.log(jars[1].avaliable))
-    setUp(jsonData);
+    initialSetup();
   } catch(error) {
-    throw new Error (`Unable to get data from JSON at ${error.stack  }`);
+    throw new Error (`Unable to get data from JSON: ${error.message}`);
   }
 }
 
-function setUp() {
-  for(const key in dataFilters) {
-    let filterClass = dataFilters[key].value;
-    let filterName = dataFilters[key].frontend_value;
-    let newFilter = document.createElement('a');
+function initialSetup() {
+  setupThumbnailGallery();
+  setupFilters();
+  fillCounter(jsonJars.length);
+}
+
+function setupFilters() {
+  for(const key in jsonFilters) {
+    const filterClass = jsonFilters[key].value;
+    const filterName = jsonFilters[key].frontend_value;
+    const newFilter = document.createElement('a');
     newFilter.classList.add('filter');
-    newFilter.href = '#';
     newFilter.dataset.filter = filterClass;
     newFilter.innerHTML = filterName;
     navMenu.appendChild(newFilter);
   }
-  for (const key in dataJars) {
-    let thumbnailContainer = document.createElement('div');
-    let thumbnailImage = document.createElement('img');
+  manageFilters();
+}
+
+function setupThumbnailGallery() {
+  for (const key in jsonJars) {
+    const thumbnailContainer = document.createElement('div');
+    const thumbnailImage = document.createElement('img');
     thumbnailContainer.classList.add('thumbnail-gallery__container');
-    thumbnailImage.classList.add('gallery__image');
-    thumbnailImage.classList.add('lazy');
+    thumbnailImage.classList.add('gallery__image', 'lazy');
     thumbnailImage.alt = 'thumbnail'
     thumbnailImage.dataset.group = key;
     thumbnailImage.src = `./img/jars/group${key}/img1.jpg`;
     thumbnailContainer.appendChild(thumbnailImage);
     thumbnailGallery.appendChild(thumbnailContainer);
 
-    if(dataJars[key].avaliable == false) {
+    if(!jsonJars[key].avaliable) {
       thumbnailContainer.classList.add('unavaliable');
       addOverlay(thumbnailImage);
     } 
   }
-  fillCounter(dataJars.length);
-  initial();
 }
 
-function initial() {
-  const fullScreenContainer = document.querySelector('.full-screen-container');
-  const elem = document.querySelector('.main-carousel');
-  var activeFilter = 'all';
-  const counter = document.querySelector('.other-filters__count');
-  filters = document.querySelectorAll('.filter');
-  thumbnailImages = document.querySelectorAll('.gallery__image');
-  thumbnailContainer = document.querySelectorAll('.thumbnail-gallery__container');
-  manageFilters();
-}
 getData();
 
 const elem = document.querySelector('.main-carousel');
@@ -129,7 +124,7 @@ function creatingFSGallery (clickedElement) {
   imageGroup.innerHTML = `Tegla #${groupIndex}`;
 
   // Populate the full-screen gallery with the images from the selected group
-  for(let i = 1; i <= dataJars[groupIndex].img_number; i++) {
+  for(let i = 1; i <= jsonJars[groupIndex].img_number; i++) {
     createCarousel(groupIndex, i);
   }
 
@@ -145,17 +140,26 @@ function createCarousel (groupIndex, imageIndex) {
   const pathToImg = `./img/jars/group${groupIndex}/img${imageIndex}.jpg`;
   const carouselCell = document.createElement('div');
   const carouselImg = document.createElement('img');
+
   carouselCell.classList.add('carousel-cell');
   carouselImg.classList.add('carousel-cell-image');
   carouselImg.src = pathToImg;
   carouselImg.alt = `Full-Screen Image ${imageIndex}`;
+
   carouselCell.appendChild(carouselImg);
-  flkty.append(carouselCell);
+
+  if (flkty) {
+    flkty.append(carouselCell);
+  } else {
+    console.error('Flickity not found.');
+  }
 }
+
 // Exit full screen gallery
 const flickityNavigation = document.querySelectorAll('.flickity-button');
 const carouselCell = document.querySelectorAll('.carousel-cell');
-const nonExit = ['carousel-cell-image', 'flickity-button', 'flickity-button-icon', 'flickity-button-icon', 'dot', 'image-group', 'flickity-page-dots', 'arrow']
+const nonExit = ['carousel-cell-image', 'flickity-button', 'flickity-button-icon', 'flickity-button-icon', 'dot', 'image-group', 'flickity-page-dots', 'arrow'];
+
 document.addEventListener('DOMContentLoaded', function () {
   fullScreenContainer.addEventListener('click', function (e) {
     const element = e.target;
@@ -192,12 +196,11 @@ function fadeOut(element, duration) {
       element.style.opacity = opacity;
       
       if (opacity <= 0) {
-        element.style.display = 'none'; // Optionally hide the element when faded out
+        element.style.display = 'none';
       } else {
         requestAnimationFrame(step);
       }
     }
-  
     requestAnimationFrame(step);
 }
 
@@ -208,7 +211,6 @@ var closeElement = document.querySelector('.close-menu');
 var menuLink = document.querySelectorAll('.nav-menu__link');
 var startMenu = document.querySelector('.start-menu');
 var mainNav = document.querySelector('.main-nav');
-console.log(mainNav)
 
 function openMenu() {
   startMenu.classList.remove('button-anim-close');
@@ -236,7 +238,7 @@ menuLink.forEach(function(menuLink) {
   menuLink.onclick = closeMenu;
 })
 
-//mobile menu
+// Handeling side menu on mobile devices (leses than 768px)
 
 var openElementMobile = document.querySelector('.open-mobile');
 var closeElementMobile = document.querySelector('.close-menu');
@@ -251,9 +253,9 @@ function openMobile() {
 
 function filterGallery(filter) {
   thumbnailImages.forEach((image, index) => {
-    let jarType = dataJars[index].type;
+    let jarType = jsonJars[index].type;
     let isHidden = !(jarType.includes(filter) || filter === 'all');
-    if(!showUnavaliable.checked && dataJars[index].avaliable === false) { 
+    if(!showUnavaliable.checked && jsonJars[index].avaliable === false) { 
       isHidden = true;
     }
     image.parentNode.classList.toggle('hidden', isHidden);
@@ -263,11 +265,14 @@ function filterGallery(filter) {
 }
 
 function manageFilters () {
+  filters = document.querySelectorAll('.filter');
+  thumbnailImages = document.querySelectorAll('.gallery__image');
+  thumbnailContainer = document.querySelectorAll('.thumbnail-gallery__container');
   filters.forEach(filter => {
     var selectedFilter = filter.dataset.filter;
     var isHidden = true;
     //check if filter should be used
-    dataJars.forEach(jar => {
+    jsonJars.forEach(jar => {
       if(jar.type.includes(selectedFilter) || selectedFilter === 'all') {
         isHidden = false;
       }
@@ -321,13 +326,13 @@ const showUnavaliable = document.querySelector('.show-unavaliable');
 showUnavaliable.addEventListener('click', () => {
   if(!showUnavaliable.checked) {
     thumbnailImages.forEach((image, index) => {
-      if(!dataJars[index].avaliable && !image.parentNode.classList.contains('hidden')) {
+      if(!jsonJars[index].avaliable && !image.parentNode.classList.contains('hidden')) {
         image.parentNode.classList.add('hidden');
       }
     })
   } else {
     thumbnailImages.forEach((image, index) => {
-      if((dataJars[index].type.includes(activeFilter) || activeFilter === 'all')) {
+      if((jsonJars[index].type.includes(activeFilter) || activeFilter === 'all')) {
         image.parentNode.classList.remove('hidden');
       } 
     })
